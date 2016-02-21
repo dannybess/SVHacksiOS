@@ -28,7 +28,7 @@ var typesArray : [String] = ["Uber", "Hotel", "Plane"]
 
 class MainTableViewController: UITableViewController {
     
-    let kCloseCellHeight: CGFloat = 179
+    let kCloseCellHeight: CGFloat = 250
     let kOpenCellHeight: CGFloat = 488
 
     let kRowsCount = 10
@@ -37,9 +37,15 @@ class MainTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let purpleColor = UIColor(red: 127/255, green: 140/255, blue: 141/255, alpha: 1.0)
+        let blueColor = UIColor(red: 41/255, green: 128/255, blue: 185/255, alpha: 1.0)
+        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [blueColor.CGColor, purpleColor.CGColor]
+        //self.tableView.layer.insertSublayer(gradient, atIndex: 0)
+        self.tableView.backgroundColor = UIColor(red: 89/255, green: 171/255, blue: 227/255, alpha: 1.0)
         createCellHeightsArray()
-        self.tableView.backgroundColor = UIColor.lightGrayColor()
     }
     
     // MARK: configure
@@ -90,7 +96,7 @@ class MainTableViewController: UITableViewController {
             cell.uberLine.hidden = false
             cell.centerValue.text = "412"
             //Second Side of Cell
-            cell.topLabel.text = "Room"
+            cell.topLabel.text = "Your Room"
             cell.underTopLabel.text = "412"
             cell.driverLabel.text = "Hotel Name"
             cell.underDriverLabel.text = "Ritz Carlton"

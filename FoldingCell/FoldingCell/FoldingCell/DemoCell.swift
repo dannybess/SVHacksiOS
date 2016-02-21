@@ -36,6 +36,7 @@ class DemoCell: FoldingCell, MKMapViewDelegate {
     @IBOutlet weak var underUnderArrivalTimeLabel: UILabel!
     @IBOutlet weak var returnTripLabel: UILabel!
     
+    @IBOutlet weak var arrowImage1: UIImageView!
     override func awakeFromNib() {
         
         foregroundView.layer.cornerRadius = 10

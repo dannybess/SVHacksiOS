@@ -10,18 +10,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var foraLogo: UIImageView!
     @IBOutlet weak var textField: UITextField!
     var screen = UIScreen.mainScreen().bounds
     @IBOutlet weak var loginButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nav = self.navigationController?.navigationBar
-        nav?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        nav?.shadowImage = UIImage()
-        nav?.translucent = true
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 3
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
@@ -37,13 +37,17 @@ class LoginViewController: UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         var info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        self.textField.frame.origin.y = self.foraLogo.frame.maxY + 30
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraint.constant = keyboardFrame.size.height + 20
+        })
     }
     
     func keyboardWillHide(notification: NSNotification){
         var info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        self.textField.frame.origin.y = screen.height - textField.frame.height - self.loginButton.frame.height - 20
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraint.constant = 59
+        })
     }
     
     deinit {

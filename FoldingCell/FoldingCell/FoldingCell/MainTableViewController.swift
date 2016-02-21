@@ -30,16 +30,33 @@ func randomInt(min: Int, max:Int) -> Int {
     return min + Int(arc4random_uniform(UInt32(max - min + 1)))
 }
 
+@IBDesignable class popupView : UIView
+{
+    @IBOutlet var view: popupView!
+
+    class func instanceFromNib() -> UIView {
+
+        return UINib(nibName: "popupView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! UIView
+    }
+
+}
+
 class MainTableViewController: UITableViewController {
     
     let kCloseCellHeight: CGFloat = 180
     let kOpenCellHeight: CGFloat = 488
-
     let kRowsCount = 10
-    
     var cellHeights = [CGFloat]()
-    
     var colorArray : [UIColor] = [UIColor(red: 26/255, green: 53/255, blue: 87/255, alpha: 1.0), UIColor(red: 46/255, green: 92/255, blue: 151/255, alpha: 1.0), UIColor(red: 69/255, green: 139/255, blue: 228/255, alpha: 1.0), UIColor(red: 57/255, green: 115/255, blue: 189/255, alpha: 1.0)]
+    var popup : KLCPopup!
+    
+
+    override func viewDidAppear(animated: Bool) {
+        let view = popupView.instanceFromNib()
+        popup = KLCPopup(contentView: view, showType: KLCPopupShowType.BounceIn, dismissType: KLCPopupDismissType.FadeOut, maskType: KLCPopupMaskType.Dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: true)
+
+        popup.show()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +66,11 @@ class MainTableViewController: UITableViewController {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = [blueColor.CGColor, purpleColor.CGColor]
-        //self.tableView.layer.insertSublayer(gradient, atIndex: 0)
-        //self.tableView.backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         createCellHeightsArray()
+
+        var NetworkClass = Network()
+        NetworkClass.getContentFromServr("1")
     }
     
     // MARK: configure

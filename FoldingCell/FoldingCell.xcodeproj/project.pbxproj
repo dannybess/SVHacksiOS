@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2114E53B1C795C0100CCD2D1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2114E53A1C795C0100CCD2D1 /* MapKit.framework */; };
+		216246821C79E9EE00E0D44E /* VideoCutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216246801C79E9EE00E0D44E /* VideoCutter.swift */; };
+		216246831C79E9EE00E0D44E /* VideoSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216246811C79E9EE00E0D44E /* VideoSplashViewController.swift */; };
+		216246851C79EBBA00E0D44E /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 216246841C79EBB100E0D44E /* test.mp4 */; };
+		2162468B1C79ED9F00E0D44E /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2162468A1C79ED9400E0D44E /* test2.mp4 */; };
 		218D06561C79864B00DB4A44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D06551C79864B00DB4A44 /* LoginViewController.swift */; };
 		847A58081C294F750028FB84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A58071C294F750028FB84 /* AppDelegate.swift */; };
 		847A580D1C294F750028FB84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A580B1C294F750028FB84 /* Main.storyboard */; };
@@ -51,6 +55,7 @@
 		9D4CE9031C79DDCD00252B22 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE8F01C79DDCD00252B22 /* Timeline.swift */; };
 		9D4CE9041C79DDCD00252B22 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE8F11C79DDCD00252B22 /* Upload.swift */; };
 		9D4CE9051C79DDCD00252B22 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE8F21C79DDCD00252B22 /* Validation.swift */; };
+		9D9174071C7A3ABD00917E53 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9174061C7A3ABD00917E53 /* SwiftSpinner.swift */; };
 		9DBC580F1C79E9020004A229 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC57EE1C79E9020004A229 /* ArrayExtensions.swift */; };
 		9DBC58101C79E9020004A229 /* BlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC57EF1C79E9020004A229 /* BlockButton.swift */; };
 		9DBC58111C79E9020004A229 /* BlockLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC57F01C79E9020004A229 /* BlockLongPress.swift */; };
@@ -84,6 +89,7 @@
 		9DBC582D1C79E9020004A229 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC580C1C79E9020004A229 /* UITextViewExtensions.swift */; };
 		9DBC582E1C79E9020004A229 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC580D1C79E9020004A229 /* UIViewControllerExtensions.swift */; };
 		9DBC582F1C79E9020004A229 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC580E1C79E9020004A229 /* UIViewExtensions.swift */; };
+		9DBC58341C7A02970004A229 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC58331C7A02970004A229 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +117,10 @@
 
 /* Begin PBXFileReference section */
 		2114E53A1C795C0100CCD2D1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		216246801C79E9EE00E0D44E /* VideoCutter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCutter.swift; sourceTree = "<group>"; };
+		216246811C79E9EE00E0D44E /* VideoSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSplashViewController.swift; sourceTree = "<group>"; };
+		216246841C79EBB100E0D44E /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		2162468A1C79ED9400E0D44E /* test2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.mp4; sourceTree = "<group>"; };
 		218D06551C79864B00DB4A44 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		840B984B1C33FE660081B926 /* FoldingCellFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldingCellFramework.h; sourceTree = "<group>"; };
 		840B984D1C33FE660081B926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +172,7 @@
 		9D4CE8F01C79DDCD00252B22 /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		9D4CE8F11C79DDCD00252B22 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		9D4CE8F21C79DDCD00252B22 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		9D9174061C7A3ABD00917E53 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSpinner.swift; path = Fonts/SwiftSpinner.swift; sourceTree = "<group>"; };
 		9DBC57EE1C79E9020004A229 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		9DBC57EF1C79E9020004A229 /* BlockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockButton.swift; sourceTree = "<group>"; };
 		9DBC57F01C79E9020004A229 /* BlockLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockLongPress.swift; sourceTree = "<group>"; };
@@ -195,6 +206,7 @@
 		9DBC580C1C79E9020004A229 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
 		9DBC580D1C79E9020004A229 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9DBC580E1C79E9020004A229 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		9DBC58331C7A02970004A229 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +228,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2162467F1C79E9EE00E0D44E /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				216246801C79E9EE00E0D44E /* VideoCutter.swift */,
+				216246811C79E9EE00E0D44E /* VideoSplashViewController.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		840B984A1C33FE660081B926 /* FoldingCellFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,12 +269,17 @@
 		847A58061C294F750028FB84 /* FoldingCell */ = {
 			isa = PBXGroup;
 			children = (
+				9DBC58331C7A02970004A229 /* SwiftyJSON.swift */,
+				2162468A1C79ED9400E0D44E /* test2.mp4 */,
+				216246841C79EBB100E0D44E /* test.mp4 */,
+				2162467F1C79E9EE00E0D44E /* Video */,
 				9DBC57ED1C79E9020004A229 /* Sources */,
 				9D4CE8DE1C79DDCD00252B22 /* AlomaFire */,
 				847A58191C294FAB0028FB84 /* FoldingCell */,
 				8499F5D21C2A83D90027D5D2 /* Fonts */,
 				9D4CE8D91C79D93100252B22 /* FoldingCell-Bridging-Header.h */,
 				9D4CE8D21C79D61D00252B22 /* KLCPopup.h */,
+				9D9174061C7A3ABD00917E53 /* SwiftSpinner.swift */,
 				9D4CE8D31C79D61D00252B22 /* KLCPopup.m */,
 				9D4CE8CB1C79D26000252B22 /* popupView.xib */,
 				84CDB1591C2D416400FCD7C8 /* DemoCell.swift */,
@@ -455,6 +481,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2162468B1C79ED9F00E0D44E /* test2.mp4 in Resources */,
+				216246851C79EBBA00E0D44E /* test.mp4 in Resources */,
 				9D4CE8F71C79DDCD00252B22 /* Info.plist in Resources */,
 				9D4CE8F61C79DDCD00252B22 /* Info-tvOS.plist in Resources */,
 				9D4CE8CC1C79D26000252B22 /* popupView.xib in Resources */,
@@ -488,6 +516,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBC58341C7A02970004A229 /* SwiftyJSON.swift in Sources */,
+				216246821C79E9EE00E0D44E /* VideoCutter.swift in Sources */,
 				9DBC58121C79E9020004A229 /* BlockPan.swift in Sources */,
 				9D4CE8FB1C79DDCD00252B22 /* Notifications.swift in Sources */,
 				9DBC58291C79E9020004A229 /* UIFontExtensions.swift in Sources */,
@@ -510,6 +540,7 @@
 				9DBC58221C79E9020004A229 /* NSURLExtensions.swift in Sources */,
 				9DBC58191C79E9020004A229 /* CGRectExtensions.swift in Sources */,
 				9DBC58111C79E9020004A229 /* BlockLongPress.swift in Sources */,
+				216246831C79E9EE00E0D44E /* VideoSplashViewController.swift in Sources */,
 				9DBC582F1C79E9020004A229 /* UIViewExtensions.swift in Sources */,
 				84CDB15A1C2D416400FCD7C8 /* DemoCell.swift in Sources */,
 				9DBC581A1C79E9020004A229 /* DictionaryExtensions.swift in Sources */,
@@ -522,6 +553,7 @@
 				9DBC581E1C79E9020004A229 /* NSAttributedStringExtensions.swift in Sources */,
 				9D4CE8D41C79D61D00252B22 /* KLCPopup.m in Sources */,
 				9D4CE9011C79DDCD00252B22 /* ServerTrustPolicy.swift in Sources */,
+				9D9174071C7A3ABD00917E53 /* SwiftSpinner.swift in Sources */,
 				9D4CE8DB1C79DBC100252B22 /* TravelClass.swift in Sources */,
 				9DBC582A1C79E9020004A229 /* UIImageExtensions.swift in Sources */,
 				9D4CE8FC1C79DDCD00252B22 /* ParameterEncoding.swift in Sources */,
@@ -681,7 +713,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrickli/Desktop/FoldingCell/FoldingCell/FoldingCell-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrickli/Desktop/SVHacksiOS2-master/FoldingCell/FoldingCell/FoldingCell-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Debug;
@@ -698,7 +730,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ramotion.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrickli/Desktop/FoldingCell/FoldingCell/FoldingCell-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrickli/Desktop/SVHacksiOS2-master/FoldingCell/FoldingCell/FoldingCell-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Release;

@@ -24,11 +24,7 @@
 import UIKit
 import MapKit
 
-var typesArray : [String] = ["Uber", "Hotel", "Plane", "Uber", "Plane", "Plane", "Plane", "Plane", "Plane", "Plane"]
 
-func randomInt(min: Int, max:Int) -> Int {
-    return min + Int(arc4random_uniform(UInt32(max - min + 1)))
-}
 
 @IBDesignable class popupView : UIView
 {
@@ -42,14 +38,20 @@ func randomInt(min: Int, max:Int) -> Int {
 }
 
 class MainTableViewController: UITableViewController {
-    
+
+    var uberCells : [Uber] = []
+    var hotelCells : [Hotel] = []
+    var planeCells : [Plane] = []
     let kCloseCellHeight: CGFloat = 180
     let kOpenCellHeight: CGFloat = 488
     let kRowsCount = 10
     var cellHeights = [CGFloat]()
     var colorArray : [UIColor] = [UIColor(red: 26/255, green: 53/255, blue: 87/255, alpha: 1.0), UIColor(red: 46/255, green: 92/255, blue: 151/255, alpha: 1.0), UIColor(red: 69/255, green: 139/255, blue: 228/255, alpha: 1.0), UIColor(red: 57/255, green: 115/255, blue: 189/255, alpha: 1.0)]
     var popup : KLCPopup!
-    
+    var typesArray : [String] = []
+    var hotelIndex = 0
+    var uberIndex = 0
+    var flightIndex = 0
 
     override func viewDidAppear(animated: Bool) {
         let view = popupView.instanceFromNib()
@@ -80,15 +82,26 @@ class MainTableViewController: UITableViewController {
         }
     }
 
+    func getDayOfWeek(today:String)->Int {
+
+        let formatter  = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = formatter.dateFromString(today)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myComponents = myCalendar.components(.Weekday, fromDate: todayDate)
+        let weekDay = myComponents.weekday
+        return weekDay
+    }
+
+
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.typesArray.count
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 
-        
 
         if cell is FoldingCell {
             let foldingCell = cell as! FoldingCell
@@ -104,28 +117,51 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print(self.hotelIndex)
+        print(self.flightIndex)
+        print(self.uberIndex)
+
         let cell = tableView.dequeueReusableCellWithIdentifier("FoldingCell", forIndexPath: indexPath) as! DemoCell
         
         cell.returnTripLabel.hidden = true
-        
+
+        if(indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 6) {
+            cell.returnTripLabel.hidden = false
+        }
+
         if(typesArray[indexPath.row] == "Uber") {
             cell.sideColor.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
             cell.sideView.backgroundColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1.0)
             cell.uberDate.textColor = UIColor(red: 51/255, green: 61/255, blue: 67/255, alpha: 0.5)
             cell.uberStartTime.textColor = UIColor(red: 51/255, green: 61/255, blue: 67/255, alpha: 0.5)
             cell.barView.backgroundColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1.0)
-    
+            //cell.uberDate.text = uberCells[uberIndex].pickupTime
+            cell.uberStartTime.text = uberCells[uberIndex].pickupTime
+            cell.uberDate.text = "March 21"//uberCells[uberIndex].dayOfWeek
+            cell.uberArrivalValue.text = uberCells[uberIndex].estimatedArrivalTime
+            cell.uberHomeAddress.text = uberCells[uberIndex].startDestination
+            cell.uberEndAddress.text = uberCells[uberIndex].endDestination
+            cell.underTopLabel.text = uberCells[uberIndex].pickupTime
+            cell.underDriverLabel.text = uberCells[uberIndex].driverName
+            cell.underFromLabel.text = uberCells[uberIndex].startDestination
+            cell.underToLabel.text = uberCells[uberIndex].endDestination
+            cell.underArrivalTimeLabel.text = "11:40 AM"
+            cell.underUnderArrivalTimeLabel.text = "March 21"
+            if(self.uberIndex+1 < self.uberCells.count) {
+                self.uberIndex++
+            }
         }
+            
         else if(typesArray[indexPath.row] == "Hotel") {
             //First Side of Cell
             cell.uberEndAddress.hidden = false
             cell.uberHomeAddress.hidden = false
-            cell.uberHomeAddress.text = "Ritz Carlton"
-            cell.uberEndAddress.text = "1402 Carlton Way"
+            cell.uberHomeAddress.text = hotelCells[hotelIndex].name
+            cell.uberEndAddress.text = hotelCells[hotelIndex].name
             cell.uberImageView.image = UIImage(named: "windows")
-            cell.uberStartTime.text = "8:45 AM"
+            cell.uberStartTime.text = "March 21" //hotelCells[hotelIndex].checkinTime
             cell.uberArrivalTime.text = "Check-in Time"
-            cell.uberArrivalValue.text = "8:45 AM"
+            cell.uberArrivalValue.text = "2:00 PM"//hotelCells[hotelIndex].checkinTime
             cell.centerLabel.hidden = false
             cell.centerValue.hidden = false
             cell.centerLabel.text = "Room"
@@ -135,32 +171,38 @@ class MainTableViewController: UITableViewController {
             cell.topLabel.text = "Your Room"
             cell.underTopLabel.text = "412"
             cell.driverLabel.text = "Hotel Name"
-            cell.underDriverLabel.text = "Ritz Carlton"
+            cell.underDriverLabel.text = hotelCells[hotelIndex].name
             cell.fromLabel.text = "Check-In"
-            cell.underFromLabel.text = "8:45 AM"
+            cell.underFromLabel.text = hotelCells[hotelIndex].checkinTime
             cell.toLabel.text = "Check-Out"
-            cell.underToLabel.text = "9:25 AM"
+            cell.underToLabel.text = hotelCells[hotelIndex].checkoutTime
             cell.arrivalTimeLabel.text = "Departure Time"
-            cell.underArrivalTimeLabel.text = "8:40 AM"
-            cell.underUnderArrivalTimeLabel.text = "Friday"
+            cell.uberDate.text = "March 21"
+            cell.underArrivalTimeLabel.text = hotelCells[hotelIndex].checkoutTime
+            cell.underUnderArrivalTimeLabel.text = hotelCells[hotelIndex].dayOfWeek
             cell.sideColor.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
             cell.uberDate.textColor = UIColor(red: 51/255, green: 61/255, blue: 67/255, alpha: 0.5)
             cell.uberStartTime.textColor = UIColor(red: 51/255, green: 61/255, blue: 67/255, alpha: 0.5)
             cell.sideView.backgroundColor = UIColor(red: 93/255, green: 74/255, blue: 153/255, alpha: 1.0)
             cell.barView.backgroundColor = UIColor(red: 93/255, green: 74/255, blue: 153/255, alpha: 1.0)
+
+            if(self.hotelIndex+1 < self.hotelCells.count) {
+                self.hotelIndex++
+            }
         }
-        else if(typesArray[indexPath.row] == "Plane") {
+
+        else if(typesArray[indexPath.row] == "Flight") {
             //First Side of Cell
             cell.uberImageView.image = UIImage(named: "shape")
             cell.uberEndAddress.hidden = false
             cell.uberHomeAddress.hidden = false
             cell.uberStartTime.text = "4:20 PM"
-            cell.uberDate.text = "FRIDAY"
-            cell.uberStartTime.text = "8:45 AM"
+            cell.uberDate.text = "March 21"//planeCells[flightIndex].flightTime
+            cell.uberStartTime.text = "12:45 AM"
             cell.uberArrivalTime.text = "Gate"
-            cell.uberArrivalValue.text = "A22"
-            cell.uberHomeAddress.text = "San Francisco Intl."
-            cell.uberEndAddress.text = "San Francisco, CA 94128"
+            cell.uberArrivalValue.text = planeCells[flightIndex].gate
+            cell.uberHomeAddress.text = planeCells[flightIndex].startDestination
+            cell.uberEndAddress.text = planeCells[flightIndex].endDestination
             cell.centerLabel.hidden = true
             cell.centerValue.hidden = true
             cell.uberLine.hidden = false
@@ -169,6 +211,10 @@ class MainTableViewController: UITableViewController {
             cell.sideColor.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
             cell.sideView.backgroundColor = UIColor(red: 254/255, green: 190/255, blue: 22/255, alpha: 1.0)
             cell.barView.backgroundColor = UIColor(red: 254/255, green: 190/255, blue: 22/255, alpha: 1.0)
+
+            if(self.flightIndex+1 < self.planeCells.count) {
+                self.flightIndex++
+            }
         }
         
         return cell
